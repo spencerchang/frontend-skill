@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAISON — Cashmere Oversized Coat</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #FAF6F1;
+    --warm-white: #FFFCF8;
+    --sand: #E8DDD3;
+    --taupe: #B8A99A;
+    --copper: #C4896C;
+    --burgundy: #7A2D3A;
+    --deep-brown: #3D2B24;
+    --charcoal: #2C2421;
+    --text-primary: #2C2421;
+    --text-secondary: #6B5B52;
+    --text-muted: #9B8E85;
+    --border: #E2D9D0;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', -apple-system, sans-serif;
+    --transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: var(--warm-white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(255,252,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem; font-weight: 400;
+    letter-spacing: 0.25em; color: var(--charcoal);
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; color: var(--text-secondary);
+    transition: color var(--transition);
+  }
+  .nav-links a:hover { color: var(--burgundy); }
+  .nav-icons { display: flex; gap: 20px; align-items: center; }
+  .nav-icon {
+    width: 20px; height: 20px; cursor: pointer;
+    color: var(--text-secondary); transition: color var(--transition);
+  }
+  .nav-icon:hover { color: var(--burgundy); }
+  .cart-badge {
+    position: relative;
+  }
+  .cart-badge::after {
+    content: '2'; position: absolute; top: -6px; right: -8px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--burgundy); color: white;
+    font-size: 0.6rem; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ===== BREADCRUMB ===== */
+  .breadcrumb {
+    padding: 16px 48px;
+    font-size: 0.75rem; color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+  .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--burgundy); }
+  .breadcrumb span { margin: 0 8px; }
+
+  /* ===== PRODUCT HERO ===== */
+  .product-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 80vh;
+  }
+
+  /* Gallery */
+  .gallery {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    padding: 24px 24px 24px 48px;
+    background: var(--cream);
+  }
+  .gallery-thumbs {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .thumb {
+    width: 72px; height: 96px;
+    border-radius: 4px; overflow: hidden; cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color var(--transition);
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem; color: var(--taupe);
+  }
+  .thumb.active, .thumb:hover { border-color: var(--burgundy); }
+  .gallery-main {
+    border-radius: 8px; overflow: hidden;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    cursor: zoom-in;
+    aspect-ratio: 3/4;
+  }
+  .gallery-main-placeholder {
+    font-family: var(--font-display);
+    font-size: 1.2rem; color: var(--taupe);
+    text-align: center; line-height: 1.8;
+  }
+  .gallery-zoom-hint {
+    position: absolute; bottom: 16px; right: 16px;
+    background: rgba(255,252,248,0.85);
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 0.7rem; color: var(--text-secondary);
+    letter-spacing: 0.05em;
+  }
+
+  /* Product Info */
+  .product-info {
+    padding: 48px 48px 48px 56px;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    max-width: 560px;
+  }
+  .product-badge {
+    display: inline-block;
+    font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--copper);
+    border: 1px solid var(--copper);
+    padding: 4px 12px; border-radius: 2px;
+    margin-bottom: 20px; width: fit-content;
+  }
+  .product-title {
+    font-family: var(--font-display);
+    font-size: 2.8rem; font-weight: 300;
+    line-height: 1.15; letter-spacing: -0.01em;
+    color: var(--charcoal);
+    margin-bottom: 8px;
+  }
+  .product-subtitle {
+    font-family: var(--font-display);
+    font-size: 1.1rem; font-weight: 300; font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+  }
+  .product-price-row {
+    display: flex; align-items: baseline; gap: 16px;
+    margin-bottom: 28px;
+  }
+  .product-price {
+    font-family: var(--font-display);
+    font-size: 1.8rem; font-weight: 400;
+    color: var(--charcoal);
+  }
+  .product-price-original {
+    font-size: 1rem; color: var(--text-muted);
+    text-decoration: line-through;
+  }
+  .product-discount {
+    font-size: 0.75rem; color: var(--burgundy);
+    letter-spacing: 0.05em; font-weight: 500;
+  }
+
+  /* Rating */
+  .rating-row {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .stars { display: flex; gap: 2px; }
+  .star { width: 16px; height: 16px; color: var(--copper); }
+  .rating-text { font-size: 0.8rem; color: var(--text-secondary); }
+  .rating-text a { color: var(--burgundy); text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Divider */
+  .divider {
+    width: 100%; height: 1px;
+    background: var(--border);
+    margin: 4px 0 28px;
+  }
+
+  /* Color select */
+  .option-label {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-secondary); margin-bottom: 12px;
+  }
+  .option-label em {
+    font-style: normal; color: var(--text-primary); font-weight: 500;
+    text-transform: none; letter-spacing: 0;
+  }
+  .color-options {
+    display: flex; gap: 12px;
+    margin-bottom: 28px;
+  }
+  .color-swatch {
+    width: 36px; height: 36px; border-radius: 50%;
+    cursor: pointer; position: relative;
+    border: 2px solid transparent;
+    transition: all var(--transition);
+  }
+  .color-swatch::after {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1.5px solid transparent;
+    transition: border-color var(--transition);
+  }
+  .color-swatch.active::after { border-color: var(--burgundy); }
+  .color-swatch:hover { transform: scale(1.1); }
+
+  /* Size select */
+  .size-options { display: flex; gap: 10px; margin-bottom: 12px; }
+  .size-btn {
+    width: 48px; height: 48px;
+    border: 1px solid var(--border); border-radius: 4px;
+    background: transparent; cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8rem; color: var(--text-secondary);
+    transition: all var(--transition);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .size-btn:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+  .size-btn.active {
+    border-color: var(--charcoal); color: var(--charcoal);
+    background: rgba(44,36,33,0.04); font-weight: 500;
+  }
+  .size-btn.disabled {
+    opacity: 0.3; cursor: not-allowed;
+    text-decoration: line-through;
+  }
+  .size-guide-link {
+    font-size: 0.75rem; color: var(--burgundy);
+    text-decoration: underline; text-underline-offset: 2px;
+    cursor: pointer; margin-bottom: 28px; display: inline-block;
+  }
+
+  /* Quantity */
+  .quantity-row {
+    display: flex; align-items: center; gap: 24px;
+    margin-bottom: 28px;
+  }
+  .quantity-selector {
+    display: flex; align-items: center;
+    border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden;
+  }
+  .qty-btn {
+    width: 40px; height: 40px; border: none;
+    background: transparent; cursor: pointer;
+    font-size: 1.1rem; color: var(--text-secondary);
+    transition: all var(--transition);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .qty-btn:hover { background: var(--cream); color: var(--text-primary); }
+  .qty-value {
+    width: 48px; text-align: center;
+    font-size: 0.9rem; font-weight: 500;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    height: 40px; display: flex; align-items: center; justify-content: center;
+  }
+  .stock-hint {
+    font-size: 0.75rem; color: var(--copper);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .stock-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--copper);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Action buttons */
+  .action-row {
+    display: flex; gap: 12px; margin-bottom: 20px;
+  }
+  .btn-add-cart {
+    flex: 1; height: 56px;
+    background: var(--charcoal); color: white;
+    border: none; border-radius: 4px; cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: all var(--transition);
+    position: relative; overflow: hidden;
+  }
+  .btn-add-cart::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--burgundy);
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+  .btn-add-cart:hover::before { transform: translateX(0); }
+  .btn-add-cart span { position: relative; z-index: 1; }
+  .btn-wishlist {
+    width: 56px; height: 56px;
+    border: 1px solid var(--border); border-radius: 4px;
+    background: transparent; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition);
+    color: var(--text-secondary);
+  }
+  .btn-wishlist:hover { border-color: var(--burgundy); color: var(--burgundy); }
+  .btn-buy-now {
+    width: 100%; height: 52px;
+    background: transparent; color: var(--charcoal);
+    border: 1px solid var(--charcoal); border-radius: 4px; cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: all var(--transition);
+    margin-bottom: 28px;
+  }
+  .btn-buy-now:hover {
+    background: var(--cream);
+  }
+
+  /* Trust signals */
+  .trust-signals {
+    display: flex; gap: 24px;
+    padding-top: 20px; border-top: 1px solid var(--border);
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.72rem; color: var(--text-muted);
+    letter-spacing: 0.03em;
+  }
+  .trust-icon { width: 16px; height: 16px; color: var(--taupe); }
+
+  /* ===== PRODUCT DETAILS TABS ===== */
+  .details-section {
+    max-width: 1200px; margin: 0 auto;
+    padding: 80px 48px;
+  }
+  .tabs-nav {
+    display: flex; gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+  .tab-btn {
+    padding: 16px 32px;
+    border: none; background: transparent; cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-muted);
+    position: relative;
+    transition: color var(--transition);
+  }
+  .tab-btn.active { color: var(--charcoal); }
+  .tab-btn.active::after {
+    content: '';
+    position: absolute; bottom: -1px; left: 0; right: 0;
+    height: 2px; background: var(--charcoal);
+  }
+  .tab-btn:hover { color: var(--text-secondary); }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .desc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .desc-text h3 {
+    font-family: var(--font-display);
+    font-size: 1.6rem; font-weight: 400;
+    margin-bottom: 20px; color: var(--charcoal);
+  }
+  .desc-text p {
+    font-size: 0.9rem; line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .material-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 24px;
+  }
+  .material-tag {
+    font-size: 0.7rem; letter-spacing: 0.08em;
+    padding: 6px 14px; border-radius: 20px;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+  }
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .spec-table tr { border-bottom: 1px solid var(--border); }
+  .spec-table td {
+    padding: 14px 0;
+    font-size: 0.85rem;
+  }
+  .spec-table td:first-child {
+    color: var(--text-muted);
+    width: 40%;
+    letter-spacing: 0.03em;
+  }
+  .spec-table td:last-child {
+    color: var(--text-primary);
+  }
+
+  /* ===== REVIEWS ===== */
+  .reviews-section {
+    background: var(--cream);
+    padding: 80px 48px;
+  }
+  .reviews-container { max-width: 1200px; margin: 0 auto; }
+  .section-header {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 48px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 2rem; font-weight: 300;
+    color: var(--charcoal);
+  }
+  .section-link {
+    font-size: 0.8rem; color: var(--burgundy);
+    text-decoration: underline; text-underline-offset: 3px;
+    cursor: pointer;
+  }
+  .reviews-summary {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .review-avg {
+    text-align: center;
+  }
+  .review-avg-number {
+    font-family: var(--font-display);
+    font-size: 3.5rem; font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1;
+  }
+  .review-avg-stars { margin: 8px 0; }
+  .review-avg-count { font-size: 0.8rem; color: var(--text-muted); }
+  .review-bars { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+  .bar-row {
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.8rem; color: var(--text-muted);
+  }
+  .bar-label { width: 20px; text-align: right; }
+  .bar-track {
+    flex: 1; height: 6px;
+    background: var(--sand); border-radius: 3px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%; background: var(--copper);
+    border-radius: 3px;
+    transition: width 0.8s ease;
+  }
+  .bar-count { width: 24px; font-size: 0.75rem; }
+
+  .review-cards { display: flex; flex-direction: column; gap: 24px; }
+  .review-card {
+    background: var(--warm-white);
+    padding: 28px 32px;
+    border-radius: 8px;
+  }
+  .review-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  .reviewer { display: flex; align-items: center; gap: 12px; }
+  .reviewer-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.9rem; color: var(--taupe);
+  }
+  .reviewer-name { font-size: 0.85rem; font-weight: 500; }
+  .reviewer-badge {
+    font-size: 0.65rem; color: var(--copper);
+    letter-spacing: 0.05em;
+  }
+  .review-date { font-size: 0.75rem; color: var(--text-muted); }
+  .review-body {
+    font-size: 0.88rem; line-height: 1.7;
+    color: var(--text-secondary);
+  }
+  .review-footer {
+    margin-top: 12px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .review-helpful {
+    font-size: 0.75rem; color: var(--text-muted);
+    cursor: pointer;
+    transition: color var(--transition);
+  }
+  .review-helpful:hover { color: var(--burgundy); }
+
+  /* ===== RELATED PRODUCTS ===== */
+  .related-section {
+    padding: 80px 48px;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .related-card {
+    cursor: pointer;
+    transition: transform var(--transition);
+  }
+  .related-card:hover { transform: translateY(-4px); }
+  .related-img {
+    aspect-ratio: 3/4;
+    background: var(--cream);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 0.9rem; color: var(--taupe);
+    position: relative;
+    overflow: hidden;
+  }
+  .related-img .quick-add {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 12px;
+    background: rgba(44,36,33,0.9);
+    color: white; text-align: center;
+    font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transform: translateY(100%);
+    transition: transform var(--transition);
+  }
+  .related-card:hover .quick-add { transform: translateY(0); }
+  .related-name {
+    font-family: var(--font-display);
+    font-size: 1.05rem; font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .related-price { font-size: 0.85rem; color: var(--text-secondary); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--charcoal); color: var(--taupe);
+    padding: 64px 48px 32px;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    max-width: 1200px; margin: 0 auto;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .footer-brand {
+    font-family: var(--font-display);
+    font-size: 1.5rem; letter-spacing: 0.25em;
+    color: var(--sand);
+    margin-bottom: 16px;
+  }
+  .footer-desc {
+    font-size: 0.8rem; line-height: 1.7;
+    color: var(--taupe); max-width: 320px;
+  }
+  .footer-heading {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--sand); margin-bottom: 20px;
+  }
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 10px; }
+  .footer-links a {
+    font-size: 0.8rem; color: var(--taupe);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  .footer-links a:hover { color: var(--copper); }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    padding-top: 24px;
+    display: flex; justify-content: space-between;
+    font-size: 0.72rem; color: rgba(184,169,154,0.6);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .product-hero { grid-template-columns: 1fr; }
+    .gallery { padding: 24px; }
+    .product-info { padding: 32px 24px; max-width: 100%; }
+    .product-title { font-size: 2.2rem; }
+    .desc-grid { grid-template-columns: 1fr; gap: 32px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 16px 24px; }
+    .breadcrumb { padding: 16px 24px; }
+    .details-section, .reviews-section, .related-section { padding: 56px 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .gallery { grid-template-columns: 1fr; }
+    .gallery-thumbs { flex-direction: row; order: 2; }
+    .thumb { width: 56px; height: 72px; }
+    .product-title { font-size: 1.8rem; }
+    .action-row { flex-direction: column; }
+    .btn-wishlist { width: 100%; }
+    .trust-signals { flex-direction: column; gap: 12px; }
+    .reviews-summary { grid-template-columns: 1fr; gap: 24px; }
+    .related-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .tabs-nav { overflow-x: auto; }
+    .tab-btn { white-space: nowrap; padding: 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">MAISON</div>
+  <ul class="nav-links">
+    <li><a href="#">新品上市</a></li>
+    <li><a href="#">女裝</a></li>
+    <li><a href="#">男裝</a></li>
+    <li><a href="#">配件</a></li>
+    <li><a href="#">Sale</a></li>
+  </ul>
+  <div class="nav-icons">
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <div class="cart-badge">
+      <svg class="nav-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4ZM3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    </div>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">首頁</a><span>/</span>
+  <a href="#">女裝</a><span>/</span>
+  <a href="#">外套</a><span>/</span>
+  Cashmere Oversized Coat
+</div>
+
+<!-- PRODUCT HERO -->
+<section class="product-hero">
+  <div class="gallery">
+    <div class="gallery-thumbs">
+      <div class="thumb active">正面</div>
+      <div class="thumb">背面</div>
+      <div class="thumb">細節</div>
+      <div class="thumb">穿搭</div>
+      <div class="thumb">模特</div>
+    </div>
+    <div class="gallery-main">
+      <div class="gallery-main-placeholder">
+        商品圖片<br>Product Image<br><br>750 × 1000
+      </div>
+      <div class="gallery-zoom-hint">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="display:inline-block;vertical-align:middle;margin-right:4px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35M11 8v6M8 11h6"/></svg>
+        點擊放大
+      </div>
+    </div>
+  </div>
+
+  <div class="product-info">
+    <div class="product-badge">2026 春季新品</div>
+    <h1 class="product-title">Cashmere Oversized Coat</h1>
+    <p class="product-subtitle">純喀什米爾羊絨・寬鬆輪廓・義大利手工縫製</p>
+
+    <div class="product-price-row">
+      <span class="product-price">NT$ 28,800</span>
+      <span class="product-price-original">NT$ 36,000</span>
+      <span class="product-discount">-20%</span>
+    </div>
+
+    <div class="rating-row">
+      <div class="stars">
+        <svg class="star" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+        <svg class="star" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+        <svg class="star" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+        <svg class="star" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+        <svg class="star" style="color:var(--sand)" viewBox="0 0 20 20" fill="currentColor"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+      </div>
+      <span class="rating-text">4.0 · <a href="#reviews">127 則評價</a></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Color -->
+    <div class="option-label">顏色 — <em>焦糖棕</em></div>
+    <div class="color-options">
+      <div class="color-swatch active" style="background:#C4896C" title="焦糖棕"></div>
+      <div class="color-swatch" style="background:#2C2421" title="深黑"></div>
+      <div class="color-swatch" style="background:#E8DDD3" title="燕麥白"></div>
+      <div class="color-swatch" style="background:#7A2D3A" title="酒紅"></div>
+    </div>
+
+    <!-- Size -->
+    <div class="option-label">尺寸 — <em>M</em></div>
+    <div class="size-options">
+      <div class="size-btn">XS</div>
+      <div class="size-btn">S</div>
+      <div class="size-btn active">M</div>
+      <div class="size-btn">L</div>
+      <div class="size-btn disabled">XL</div>
+    </div>
+    <span class="size-guide-link">尺寸指南 →</span>
+
+    <!-- Quantity -->
+    <div class="quantity-row">
+      <div class="quantity-selector">
+        <button class="qty-btn">−</button>
+        <div class="qty-value">1</div>
+        <button class="qty-btn">+</button>
+      </div>
+      <div class="stock-hint">
+        <span class="stock-dot"></span>
+        僅剩 3 件
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="action-row">
+      <button class="btn-add-cart"><span>加入購物車</span></button>
+      <button class="btn-wishlist">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78Z"/></svg>
+      </button>
+    </div>
+    <button class="btn-buy-now">立即購買</button>
+
+    <!-- Trust -->
+    <div class="trust-signals">
+      <div class="trust-item">
+        <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016Z"/></svg>
+        正品保證
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+        免費配送
+      </div>
+      <div class="trust-item">
+        <svg class="trust-icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182"/></svg>
+        30 天退換
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT DETAILS -->
+<section class="details-section">
+  <div class="tabs-nav">
+    <button class="tab-btn active" onclick="switchTab(event, 'tab-desc')">商品描述</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-spec')">規格詳情</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-care')">保養指南</button>
+    <button class="tab-btn" onclick="switchTab(event, 'tab-ship')">配送與退換</button>
+  </div>
+
+  <div id="tab-desc" class="tab-content active">
+    <div class="desc-grid">
+      <div class="desc-text">
+        <h3>精選喀什米爾羊絨</h3>
+        <p>源自蒙古高原的頂級喀什米爾羊絨，以雙面手工編織工藝打造。每一件大衣皆由義大利佛羅倫斯工坊的資深裁縫師傅手工完成，從裁剪到最後一針縫線，平均耗時超過 40 小時。</p>
+        <p>寬鬆的 oversized 輪廓設計，搭配落肩剪裁與隱藏式暗扣，在不經意間展現從容不迫的優雅姿態。內襯採用絲質材料，穿脫順暢且貼膚柔軟。</p>
+        <div class="material-tags">
+          <span class="material-tag">100% 喀什米爾</span>
+          <span class="material-tag">義大利手工</span>
+          <span class="material-tag">絲質內襯</span>
+          <span class="material-tag">隱藏式暗扣</span>
+        </div>
+      </div>
+      <div class="desc-image" style="aspect-ratio:4/3;background:var(--cream);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);color:var(--taupe)">
+        細節圖片
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-spec" class="tab-content">
+    <table class="spec-table">
+      <tr><td>材質</td><td>100% 喀什米爾羊絨</td></tr>
+      <tr><td>內襯</td><td>100% 桑蠶絲</td></tr>
+      <tr><td>產地</td><td>義大利 佛羅倫斯</td></tr>
+      <tr><td>版型</td><td>Oversized / 寬鬆版型</td></tr>
+      <tr><td>衣長 (M)</td><td>108 cm</td></tr>
+      <tr><td>胸圍 (M)</td><td>124 cm</td></tr>
+      <tr><td>袖長 (M)</td><td>62 cm</td></tr>
+      <tr><td>重量</td><td>約 980g</td></tr>
+      <tr><td>扣合方式</td><td>隱藏式磁吸暗扣 × 4</td></tr>
+      <tr><td>口袋</td><td>雙側插手口袋 + 內袋 × 1</td></tr>
+    </table>
+  </div>
+
+  <div id="tab-care" class="tab-content">
+    <div class="desc-text" style="max-width:640px">
+      <h3>細心呵護，歷久彌新</h3>
+      <p>建議使用專業乾洗。如需自行清潔，請以冷水手洗並使用羊絨專用洗劑。平放晾乾，避免直射陽光。</p>
+      <p>收納時請折疊存放，避免使用衣架以防止肩部變形。可搭配雪松木防蟲片保存。定期使用羊絨專用梳輕輕去除起球。</p>
+    </div>
+  </div>
+
+  <div id="tab-ship" class="tab-content">
+    <div class="desc-text" style="max-width:640px">
+      <h3>配送與退換貨政策</h3>
+      <p>台灣本島免運費，一般訂單 2-3 個工作日送達。離島地區酌收 NT$150 運費。急件可加購隔日到達服務（NT$200）。</p>
+      <p>商品到貨後 30 天內可申請退換貨，商品須保持全新狀態，附上原始吊牌及包裝。退貨運費由我們承擔。</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section" id="reviews">
+  <div class="reviews-container">
+    <div class="section-header">
+      <h2 class="section-title">顧客評價</h2>
+      <span class="section-link">撰寫評價</span>
+    </div>
+
+    <div class="reviews-summary">
+      <div class="review-avg">
+        <div class="review-avg-number">4.0</div>
+        <div class="review-avg-stars" style="display:flex;gap:2px;justify-content:center">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="#C4896C"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="#C4896C"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="#C4896C"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="#C4896C"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="#E8DDD3"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z"/></svg>
+        </div>
+        <div class="review-avg-count">127 則評價</div>
+      </div>
+      <div class="review-bars">
+        <div class="bar-row"><span class="bar-label">5</span><div class="bar-track"><div class="bar-fill" style="width:55%"></div></div><span class="bar-count">70</span></div>
+        <div class="bar-row"><span class="bar-label">4</span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div><span class="bar-count">32</span></div>
+        <div class="bar-row"><span class="bar-label">3</span><div class="bar-track"><div class="bar-fill" style="width:12%"></div></div><span class="bar-count">15</span></div>
+        <div class="bar-row"><span class="bar-label">2</span><div class="bar-track"><div class="bar-fill" style="width:5%"></div></div><span class="bar-count">6</span></div>
+        <div class="bar-row"><span class="bar-label">1</span><div class="bar-track"><div class="bar-fill" style="width:3%"></div></div><span class="bar-count">4</span></div>
+      </div>
+    </div>
+
+    <div class="review-cards">
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="reviewer">
+            <div class="reviewer-avatar">L</div>
+            <div>
+              <div class="reviewer-name">林小萱</div>
+              <div class="reviewer-badge">已購買 · 尺寸 S</div>
+            </div>
+          </div>
+          <span class="review-date">2026.03.15</span>
+        </div>
+        <div class="review-body">質感真的很好，摸起來非常柔軟，穿上身份量感剛好不會太重。焦糖棕的顏色比照片上更好看，很百搭。唯一小缺點是口袋稍微淺了一點，但整體非常滿意！</div>
+        <div class="review-footer">
+          <span class="review-helpful">有幫助 (23)</span>
+          <span class="review-helpful">回覆</span>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="review-card-header">
+          <div class="reviewer">
+            <div class="reviewer-avatar">C</div>
+            <div>
+              <div class="reviewer-name">Chen Wei</div>
+              <div class="reviewer-badge">已購買 · 尺寸 M</div>
+            </div>
+          </div>
+          <span class="review-date">2026.03.08</span>
+        </div>
+        <div class="review-body">送給太太的生日禮物，她非常喜歡。包裝也很有質感，附贈的防塵袋和衣架都很用心。穿起來版型很好看，oversized 但不顯胖。值得投資的一件外套。</div>
+        <div class="review-footer">
+          <span class="review-helpful">有幫助 (18)</span>
+          <span class="review-helpful">回覆</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELATED -->
+<section class="related-section">
+  <div class="section-header">
+    <h2 class="section-title">搭配推薦</h2>
+    <span class="section-link">查看更多 →</span>
+  </div>
+  <div class="related-grid">
+    <div class="related-card">
+      <div class="related-img">
+        Merino 針織衫
+        <div class="quick-add">快速加入購物車</div>
+      </div>
+      <div class="related-name">Merino Wool Turtleneck</div>
+      <div class="related-price">NT$ 8,200</div>
+    </div>
+    <div class="related-card">
+      <div class="related-img">
+        真絲圍巾
+        <div class="quick-add">快速加入購物車</div>
+      </div>
+      <div class="related-name">Silk Cashmere Scarf</div>
+      <div class="related-price">NT$ 4,800</div>
+    </div>
+    <div class="related-card">
+      <div class="related-img">
+        羊皮手套
+        <div class="quick-add">快速加入購物車</div>
+      </div>
+      <div class="related-name">Leather Lined Gloves</div>
+      <div class="related-price">NT$ 3,600</div>
+    </div>
+    <div class="related-card">
+      <div class="related-img">
+        羊毛寬褲
+        <div class="quick-add">快速加入購物車</div>
+      </div>
+      <div class="related-name">Wide Leg Wool Trousers</div>
+      <div class="related-price">NT$ 12,500</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">MAISON</div>
+      <p class="footer-desc">致力於打造經得起時間考驗的精品服飾。每一件作品都承載著工匠的熱情與對品質的堅持。</p>
+    </div>
+    <div>
+      <div class="footer-heading">購物指南</div>
+      <ul class="footer-links">
+        <li><a href="#">尺寸指南</a></li>
+        <li><a href="#">配送資訊</a></li>
+        <li><a href="#">退換貨政策</a></li>
+        <li><a href="#">付款方式</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">關於我們</div>
+      <ul class="footer-links">
+        <li><a href="#">品牌故事</a></li>
+        <li><a href="#">工藝傳承</a></li>
+        <li><a href="#">永續理念</a></li>
+        <li><a href="#">聯絡我們</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">會員服務</div>
+      <ul class="footer-links">
+        <li><a href="#">我的帳戶</a></li>
+        <li><a href="#">訂單查詢</a></li>
+        <li><a href="#">會員權益</a></li>
+        <li><a href="#">電子報</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 MAISON. All rights reserved.</span>
+    <span>隱私政策 · 服務條款</span>
+  </div>
+</footer>
+
+<script>
+  // Tab switching
+  function switchTab(e, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // Color swatch selection
+  document.querySelectorAll('.color-swatch').forEach(swatch => {
+    swatch.addEventListener('click', () => {
+      document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('active'));
+      swatch.classList.add('active');
+    });
+  });
+
+  // Size selection
+  document.querySelectorAll('.size-btn:not(.disabled)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // Thumbnail selection
+  document.querySelectorAll('.thumb').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+    });
+  });
+
+  // Quantity
+  const qtyValue = document.querySelector('.qty-value');
+  document.querySelectorAll('.qty-btn').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      let val = parseInt(qtyValue.textContent);
+      if (i === 0 && val > 1) val--;
+      if (i === 1 && val < 3) val++;
+      qtyValue.textContent = val;
+    });
+  });
+
+  // Add to cart animation
+  document.querySelector('.btn-add-cart').addEventListener('click', function() {
+    this.querySelector('span').textContent = '已加入 ✓';
+    setTimeout(() => { this.querySelector('span').textContent = '加入購物車'; }, 2000);
+  });
+
+  // Wishlist toggle
+  document.querySelector('.btn-wishlist').addEventListener('click', function() {
+    const svg = this.querySelector('svg');
+    if (svg.getAttribute('fill') === 'none') {
+      svg.setAttribute('fill', '#7A2D3A');
+      svg.setAttribute('stroke', '#7A2D3A');
+    } else {
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+    }
+  });
+</script>
+</body>
+</html>
